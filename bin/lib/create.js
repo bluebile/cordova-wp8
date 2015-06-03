@@ -130,4 +130,3 @@ module.exports.help = function () {
     console.log('    create C:\\Users\\anonymous\\Desktop\\MyProject');
     console.log('    create C:\\Users\\anonymous\\Desktop\\MyProject io.Cordova.Example AnApp');
 };
-Package.appxmanifestva
