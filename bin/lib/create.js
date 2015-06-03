@@ -89,7 +89,8 @@ module.exports.run = function (argv) {
     shell.sed('-i', /\$safeprojectname\$/g, appName, wmAppManifest);
     shell.sed('-i', /\$customurl\$/g, appName.toLowerCase() + 'mobile', wmAppManifest);
 
-    shell.sed('-i', /\$safeprojectname\$/g, appName, packageAppxmanifest);    
+    shell.sed('-i', /\$safeprojectname\$/g, appName, packageAppxmanifest);
+    shell.sed('-i', /\$guid1\$/g, guid, packageAppxmanifest); 
 
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {

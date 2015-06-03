@@ -5,7 +5,7 @@
             Publisher="CN=vinicius"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="3771bb20-0a2b-11e5-a146-91ac93cf5861" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80"/>
+  <mp:PhoneIdentity PhoneProductId="{$guid1$}" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80"/>
 
   <Properties>
     <DisplayName>$safeprojectname$</DisplayName>
