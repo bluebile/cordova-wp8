@@ -83,10 +83,13 @@ module.exports.run = function (argv) {
     console.log('Updating project files');
     // replace values in the AppManifest
     var wmAppManifest = path.join(projectPath, 'Properties', 'WMAppManifest.xml'),
-        guid = uuid.v1();
+        guid = uuid.v1(), packageAppxmanifest = path.join(projectPath, 'Package.appxmanifest');
 
     shell.sed('-i', /\$guid1\$/g, guid, wmAppManifest);
     shell.sed('-i', /\$safeprojectname\$/g, appName, wmAppManifest);
+    shell.sed('-i', /\$customurl\$/g, appName.toLowerCase() + 'mobile', wmAppManifest);
+
+    shell.sed('-i', /\$safeprojectname\$/g, appName, packageAppxmanifest);    
 
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
@@ -127,3 +130,4 @@ module.exports.help = function () {
     console.log('    create C:\\Users\\anonymous\\Desktop\\MyProject');
     console.log('    create C:\\Users\\anonymous\\Desktop\\MyProject io.Cordova.Example AnApp');
 };
+Package.appxmanifestva
