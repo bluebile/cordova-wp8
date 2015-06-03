@@ -36,7 +36,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>pt-BR</SupportedCultures>
+    <SupportedCultures>en-US</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>CordovaAppProj_$(Configuration)_$(Platform).xap</XapFilename>
@@ -181,6 +181,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\SquareTile150x150.png" />
+    <Content Include="Assets\SquareTile71x71.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\WideLogo.png" />
     <Content Include="config.xml" />
     <Content Include="www\**" />
     <Content Include="Images\appbar.back.rest.png" />
@@ -204,6 +211,9 @@
     <None Include="cordova\run.bat" />
     <None Include="cordova\version.bat" />
     <Content Include="VERSION" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
     <None Include="Properties\AppManifest.xml">
       <SubType>Designer</SubType>
     </None>
