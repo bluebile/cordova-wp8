@@ -101,7 +101,8 @@ module.exports.run = function (argv) {
 
     var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
     var config = new ConfigParser('config.xml');
-    console.log(config);
+    console.log(config.version());
+    console.log(config.getPlatformPreference('publisher','wp8'));
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
         shell.sed('-i', /\$safeprojectname\$/g, packageName, path.join(projectPath, file));
