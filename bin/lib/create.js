@@ -104,9 +104,9 @@ module.exports.run = function (argv) {
     shell.sed('-i', /\$publisher\$/g, config.getPlatformPreference('publisher','wp8'), packageAppxmanifest);
     shell.sed('-i', /\$publishername\$/g, config.getPlatformPreference('publisher_name','wp8'), packageAppxmanifest);
     shell.sed('-i', /\$packagename\$/g, config.getPlatformPreference('package_name','wp8'), packageAppxmanifest);
-    shell.sed('-i', /\$version\$/g, config.version(), packageAppxmanifest);
+    shell.sed('-i', /\$version\$/g, config.version()+'.0', packageAppxmanifest);
 
-    shell.sed('-i', /\$version\$/g, config.version(), wmAppManifest);
+    shell.sed('-i', /\$version\$/g, config.version()+'.0', wmAppManifest);
 
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
