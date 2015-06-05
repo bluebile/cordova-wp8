@@ -119,8 +119,8 @@ module.exports.run = function (argv) {
     });
     console.log('========== ANTES CFG ========');
     console.log(fs.readdirSync('.').join(',  '));
-    var cfg = new ConfigParser('./config.xml');
-    
+    var cfg = new ConfigParser('.cordova/config.json');
+
     return Q.resolve();
 };
 
