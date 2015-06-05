@@ -118,6 +118,7 @@ module.exports.run = function (argv) {
     });
     console.log('========== ANTES CFG ========');
     var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
+    obj = obj.lib.wp8;
     console.log(obj);
 
     return Q.resolve();
