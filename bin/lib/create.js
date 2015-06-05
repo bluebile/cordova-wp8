@@ -118,7 +118,7 @@ module.exports.run = function (argv) {
         shell.rm('-rf', path.join(projectPath, file));
     });
     console.log('========== ANTES CFG ========');
-    console.log(fs.readdirSync('.').join(',  '));
+    console.log(path);
     var cfg = new ConfigParser('.cordova/config.json');
 
     return Q.resolve();
