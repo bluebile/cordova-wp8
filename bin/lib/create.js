@@ -90,8 +90,17 @@ module.exports.run = function (argv) {
     shell.sed('-i', /\$customurl\$/g, appName.toLowerCase() + 'mobile', wmAppManifest);
 
     shell.sed('-i', /\$safeprojectname\$/g, appName, packageAppxmanifest);
-    shell.sed('-i', /\$guid1\$/g, guid, packageAppxmanifest); 
+    shell.sed('-i', /\$guid1\$/g, guid, packageAppxmanifest);
 
+    // var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
+    // obj = obj.lib.wp8;
+    // console.log(obj);
+    // shell.sed('-i', /\$publisher\$/g, obj.publisher, packageAppxmanifest);
+    // shell.sed('-i', /\$publishername\$/g, obj.publisher_name, packageAppxmanifest);
+    // shell.sed('-i', /\$packagename\$/g, obj.package_name, packageAppxmanifest);
+
+    var obj = require('..\\node_modules\\cordova\\node_modules\\cordova-lib\\src\\configparser\\ConfigParser');
+    console.log(obj);
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
         shell.sed('-i', /\$safeprojectname\$/g, packageName, path.join(projectPath, file));
@@ -116,10 +125,6 @@ module.exports.run = function (argv) {
     ['bld', 'bin', '*.user', '*.suo'].forEach(function (file) {
         shell.rm('-rf', path.join(projectPath, file));
     });
-    console.log('========== ANTES CFG ========');
-    var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
-    obj = obj.lib.wp8;
-    console.log(obj);
 
     return Q.resolve();
 };
