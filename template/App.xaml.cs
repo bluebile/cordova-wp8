@@ -141,6 +141,7 @@ namespace $safeprojectname$
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
+            RootFrame.UriMapper = new AssociationUriMapper();
         }
 
         // Do not add any additional code to this method
@@ -155,5 +156,27 @@ namespace $safeprojectname$
         }
 
         #endregion
+    }
+    class AssociationUriMapper : UriMapperBase
+    {
+        private string tempUri;
+
+        public override Uri MapUri(Uri uri)
+        {
+            tempUri = System.Net.HttpUtility.UrlDecode(uri.ToString());
+            // URI association launch for contoso.
+            if (tempUri.Contains("$scheme$://$path$"))
+            {
+                // Get the category ID (after "CategoryID=").
+                int categoryIdIndex = tempUri.IndexOf("$scheme$");
+                string categoryId = tempUri.Substring(categoryIdIndex);
+                System.Diagnostics.Debug.WriteLine("===========DEBUGGGGG===:  " + categoryId);
+                // Map the show products request to ShowProducts.xaml
+               return new Uri("/MainPage.xaml?url=" + categoryId, UriKind.Relative);
+            }
+
+            // Otherwise perform normal launch.
+            return uri;
+        }
     }
 }

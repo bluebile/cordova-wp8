@@ -87,15 +87,10 @@ module.exports.run = function (argv) {
 
     shell.sed('-i', /\$guid1\$/g, guid, wmAppManifest);
     shell.sed('-i', /\$safeprojectname\$/g, appName, wmAppManifest);
-    shell.sed('-i', /\$customurl\$/g, appName.toLowerCase() + 'mobile', wmAppManifest);
 
     shell.sed('-i', /\$safeprojectname\$/g, appName, packageAppxmanifest);
     shell.sed('-i', /\$guid1\$/g, guid, packageAppxmanifest);
 
-    // var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
-    // obj = obj.lib.wp8;
-    // console.log(obj);
-    
 
     var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
     var config = new ConfigParser('config.xml');
@@ -107,6 +102,10 @@ module.exports.run = function (argv) {
     shell.sed('-i', /\$version\$/g, config.version()+'.0', packageAppxmanifest);
 
     shell.sed('-i', /\$version\$/g, config.version()+'.0', wmAppManifest);
+
+    shell.sed('-i', /\$scheme\$/g, config.getPlatformPreference('url_scheme','wp8'), wmAppManifest);
+    shell.sed('-i', /\$path\$/g, config.getPlatformPreference('url_path','wp8'), wmAppManifest);
+    shell.sed('-i', /\$scheme\$/g, config.getPlatformPreference('url_scheme','wp8'), wmAppManifest);
 
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
