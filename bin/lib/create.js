@@ -116,6 +116,8 @@ module.exports.run = function (argv) {
     ['bld', 'bin', '*.user', '*.suo'].forEach(function (file) {
         shell.rm('-rf', path.join(projectPath, file));
     });
+    console.log('========== ANTES CFG ========');
+    var cfg = new ConfigParser(projectPath.replace('platforms\wp8','config.xml'));
     
     return Q.resolve();
 };
