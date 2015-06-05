@@ -22,7 +22,7 @@ var Q     = require('Q'),
     path  = require('path'),
     shell = require('shelljs'),
     uuid  = require('node-uuid'),
-    ConfigParser      = require('../node_modules/cordova/node_modules/cordova-lib/src/configparser/ConfigParser');
+    ConfigParser      = require('..\\node_modules\\cordova\\node_modules\\cordova-lib\\src\\configparser\\ConfigParser');
 
 var defaultAppName = 'CordovaWP8AppProj';
 var defaultSlnName = 'CordovaWP8Solution';
