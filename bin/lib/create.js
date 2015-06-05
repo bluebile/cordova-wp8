@@ -99,7 +99,7 @@ module.exports.run = function (argv) {
     // shell.sed('-i', /\$publishername\$/g, obj.publisher_name, packageAppxmanifest);
     // shell.sed('-i', /\$packagename\$/g, obj.package_name, packageAppxmanifest);
 
-    var obj = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
+    var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
     var config = new ConfigParser('config.xml');
     console.log(config);
     //replace projectname in project files
