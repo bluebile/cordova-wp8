@@ -99,7 +99,7 @@ module.exports.run = function (argv) {
     // shell.sed('-i', /\$publishername\$/g, obj.publisher_name, packageAppxmanifest);
     // shell.sed('-i', /\$packagename\$/g, obj.package_name, packageAppxmanifest);
 
-    var obj = require('..\\node_modules\\cordova\\node_modules\\cordova-lib\\src\\configparser\\ConfigParser');
+    var obj = require('../node_modules/cordova/node_modules/cordova-lib/src/configparser/ConfigParser');
     console.log(obj);
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
