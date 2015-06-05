@@ -21,8 +21,7 @@ var Q     = require('Q'),
     fs    = require('fs'),
     path  = require('path'),
     shell = require('shelljs'),
-    uuid  = require('node-uuid'),
-    ConfigParser      = require(path.join('..', '..'));
+    uuid  = require('node-uuid');
 
 var defaultAppName = 'CordovaWP8AppProj';
 var defaultSlnName = 'CordovaWP8Solution';
@@ -118,9 +117,8 @@ module.exports.run = function (argv) {
         shell.rm('-rf', path.join(projectPath, file));
     });
     console.log('========== ANTES CFG ========');
-    console.log(path.join(__dirname, '..', '..'));
-    
-    var cfg = new ConfigParser('.cordova/config.json');
+    var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
+    console.log(obj);
 
     return Q.resolve();
 };
