@@ -17,7 +17,7 @@
   <Languages xmlns="">
     <Language code="en-US" />
   </Languages>
-  <App xmlns="" ProductID="{$guid1$}" Title="$safeprojectname$" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="$safeprojectname$ author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Publisher="$safeprojectname$" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}">
+  <App xmlns="" ProductID="{$guid1$}" Title="$safeprojectname$" RuntimeType="Silverlight" Version="$version$" Genre="apps.normal" Author="$safeprojectname$ author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Publisher="$safeprojectname$" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />

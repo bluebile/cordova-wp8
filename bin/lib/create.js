@@ -95,14 +95,19 @@ module.exports.run = function (argv) {
     // var obj = JSON.parse(fs.readFileSync('.cordova/config.json', 'utf8'));
     // obj = obj.lib.wp8;
     // console.log(obj);
-    // shell.sed('-i', /\$publisher\$/g, obj.publisher, packageAppxmanifest);
-    // shell.sed('-i', /\$publishername\$/g, obj.publisher_name, packageAppxmanifest);
-    // shell.sed('-i', /\$packagename\$/g, obj.package_name, packageAppxmanifest);
+    
 
     var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
     var config = new ConfigParser('config.xml');
-    console.log(config.version());
-    console.log(config.getPlatformPreference('publisher','wp8'));
+    console.log();
+
+    shell.sed('-i', /\$publisher\$/g, config.getPlatformPreference('publisher','wp8'), packageAppxmanifest);
+    shell.sed('-i', /\$publishername\$/g, config.getPlatformPreference('publisher_name','wp8'), packageAppxmanifest);
+    shell.sed('-i', /\$packagename\$/g, config.getPlatformPreference('package_name','wp8'), packageAppxmanifest);
+    shell.sed('-i', /\$version\$/g, config.version(), packageAppxmanifest);
+
+    shell.sed('-i', /\$version\$/g, config.version(), wmAppManifest);
+
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
         shell.sed('-i', /\$safeprojectname\$/g, packageName, path.join(projectPath, file));

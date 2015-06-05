@@ -3,7 +3,7 @@
 
   <Identity Name="$packagename$"
             Publisher="CN=$publisher$"
-            Version="1.0.0.0" />
+            Version="$version$" />
 
   <mp:PhoneIdentity PhoneProductId="$guid1$" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80"/>
 
