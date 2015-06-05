@@ -118,7 +118,8 @@ module.exports.run = function (argv) {
         shell.rm('-rf', path.join(projectPath, file));
     });
     console.log('========== ANTES CFG ========');
-    console.log(path);
+    console.log(path.join(__dirname, '..', '..'));
+    
     var cfg = new ConfigParser('.cordova/config.json');
 
     return Q.resolve();
