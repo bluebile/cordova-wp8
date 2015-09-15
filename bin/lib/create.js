@@ -94,14 +94,23 @@ module.exports.run = function (argv) {
 
     var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//src//configparser//ConfigParser');
     var config = new ConfigParser('config.xml');
-    console.log();
+    var versionNumber = config.version().replace('v','').replace('-','.');
+    var versionObject = { alpha: 1, beta: 2, rc: 3 };
+    var arr = /([a-zA-Z]+)(\d)/g.exec(versionNumber);
+    if (arr) {
+        if (versionObject[arr[1].toLowerCase()]) {
+            versionNumber = versionNumber.replace(arr[1], versionObject[arr[1].toLowerCase()]); 
+        }
+    } else {
+        versionNumber += '.0';
+    }
 
     shell.sed('-i', /\$publisher\$/g, config.getPlatformPreference('publisher','wp8'), packageAppxmanifest);
     shell.sed('-i', /\$publishername\$/g, config.getPlatformPreference('publisher_name','wp8'), packageAppxmanifest);
     shell.sed('-i', /\$packagename\$/g, config.getPlatformPreference('package_name','wp8'), packageAppxmanifest);
-    shell.sed('-i', /\$version\$/g, config.version()+'.0', packageAppxmanifest);
+    shell.sed('-i', /\$version\$/g, versionNumber, packageAppxmanifest);
 
-    shell.sed('-i', /\$version\$/g, config.version()+'.0', wmAppManifest);
+    shell.sed('-i', /\$version\$/g, versionNumber, wmAppManifest);
 
     shell.sed('-i', /\$scheme\$/g, config.getPlatformPreference('url_scheme','wp8'), wmAppManifest);
     shell.sed('-i', /\$path\$/g, config.getPlatformPreference('url_path','wp8'), wmAppManifest);
