@@ -1,4 +1,4 @@
-﻿/*  
+/*  
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -77,6 +77,7 @@ namespace WPCordovaClassLib.CordovaLib
         XHRShim.HEADERS_RECEIVED = 2;
         XHRShim.LOADING = 3;
         XHRShim.DONE = 4;
+        XHRShim.incrementedCounter = 0;
         XHRShim.prototype = {
             isAsync: false,
             onreadystatechange: null,
@@ -152,6 +153,28 @@ namespace WPCordovaClassLib.CordovaLib
                         this.wrappedXHR.onreadystatechange = function() {
                             self.changeReadyState(self.wrappedXHR.readyState);
                         };
+                        if (this.wrappedXHR && this.wrappedXHR.upload) {
+                            this.wrappedXHR.upload.onprogress = function(e) {
+                                if (typeof self.upload.onprogress === 'function') {
+                                    self.upload.onprogress(e);
+                                }
+                            };
+                            this.wrappedXHR.upload.onload = function(e) {
+                                if (typeof self.upload.onload === 'function') {
+                                    self.upload.onload(e);
+                                }
+                            };
+                            this.wrappedXHR.upload.onerror = function(e) {
+                                if (typeof self.upload.onerror === 'function') {
+                                    self.upload.onerror(e);
+                                }
+                            };
+                            this.wrappedXHR.upload.onabort = function(e) {
+                                if (typeof self.upload.onabort === 'function') {
+                                    self.upload.onabort(e);
+                                }
+                            };
+                        }
                     }
                     return this.wrappedXHR.open(reqType, uri, isAsync, user, password);
                 }
@@ -263,7 +286,7 @@ namespace WPCordovaClassLib.CordovaLib
                     }
 
                     // Generate unique request ID
-                    var reqId = new Date().getTime().toString() + Math.random();
+                    var reqId = new Date().getTime().toString() + XHRShim.incrementedCounter++;
 
                     var funk = function () {
                         __XHRShimAliases[reqId] = alias;
@@ -275,7 +298,14 @@ namespace WPCordovaClassLib.CordovaLib
                     this.isAsync ? setTimeout(funk, 0) : funk();
                 }
             },
-            status: 404
+            status: 404,
+			upload: {
+				addEventListener: function (type, listener, useCapture){
+					if (this.wrappedXHR && this.wrappedXHR.upload) {
+						this.wrappedXHR.upload.addEventListener(type, listener, useCapture);
+					}
+				}
+			}
         };
     }
 })(window, document); ";
