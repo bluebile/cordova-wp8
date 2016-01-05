@@ -229,6 +229,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />
+    <Content Include="screen.screen-1080p.jpg" />
+    <Content Include="screen.screen-720p.jpg" />
+    <Content Include="screen.screen-WVGA.jpg" />
+    <Content Include="screen.screen-WXGA.jpg" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
