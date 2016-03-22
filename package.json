@@ -1,11 +1,11 @@
 {
     "name": "cordova-wp8",
-    "version": "3.9.0-dev",
+    "version": "4.0.0",
     "description": "cordova-wp8 release",
     "main": "bin/create",
     "repository": {
         "type": "git",
-        "url": "https://git-wip-us.apache.org/repos/asf/cordova-wp8.git"
+        "url": "https://github.com/bluebile/cordova-wp8.git"
     },
     "keywords": [
         "wp8",
