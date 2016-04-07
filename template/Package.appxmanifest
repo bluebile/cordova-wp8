@@ -42,10 +42,21 @@
           <Task Type="systemEvent" />
           </BackgroundTasks>
         </Extension>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="1">
+            <DisplayName>AccessTXT</DisplayName>
+            <SupportedFileTypes>
+              <FileType>.doc</FileType>
+              <FileType>.txt</FileType>
+              <FileType>.pdf</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>
   <Capabilities>
+    <Capability Name="documentsLibrary" />
   </Capabilities>
   <Extensions>
     <Extension Category="windows.activatableClass.inProcessServer">
