@@ -40,44 +40,16 @@ namespace $safeprojectname$
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        string path;
         // Constructor
         public MainPage()
         {
             InitializeComponent();
             this.CordovaView.Loaded += CordovaView_Loaded;
-            this.CordovaView.Browser.LoadCompleted += LoadCompletedEventHandler;
-        }
-
-        private void LoadCompletedEventHandler(object sender, NavigationEventArgs e)
-        {
-            try
-            {
-                if (path != null)
-                {
-                    this.CordovaView.CordovaBrowser.InvokeScript("handleOpenURL", new string[] {path});
-                }
-            }
-            catch (Exception /*ex*/)
-            {
-                System.Diagnostics.Debug.WriteLine("ERROR OPENURL.");
-            }
         }
 
         private void CordovaView_Loaded(object sender, RoutedEventArgs e)
         {
             this.CordovaView.Loaded -= CordovaView_Loaded;
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            IDictionary<string, string> queryString = this.NavigationContext.QueryString;
-            if (queryString.ContainsKey("url"))
-            {
-                path = queryString["url"].ToString();
-            }
-        }
-
-
     }
 }
