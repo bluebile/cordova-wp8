@@ -112,10 +112,6 @@ module.exports.run = function (argv) {
 
     shell.sed('-i', /\$version\$/g, versionNumber, wmAppManifest);
 
-    shell.sed('-i', /\$scheme\$/g, config.getPlatformPreference('url_scheme','wp8'), wmAppManifest);
-    shell.sed('-i', /\$path\$/g, config.getPlatformPreference('url_path','wp8'), wmAppManifest);
-    shell.sed('-i', /\$scheme\$/g, config.getPlatformPreference('url_scheme','wp8'), wmAppManifest);
-
     //replace projectname in project files
     ['App.xaml', 'App.xaml.cs', 'MainPage.xaml', 'MainPage.xaml.cs', defaultAppName + '.csproj'].forEach(function (file) {
         shell.sed('-i', /\$safeprojectname\$/g, packageName, path.join(projectPath, file));
