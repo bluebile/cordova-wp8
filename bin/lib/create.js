@@ -92,7 +92,7 @@ module.exports.run = function (argv) {
     shell.sed('-i', /\$guid1\$/g, guid, packageAppxmanifest);
 
 
-    var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//node_modules//cordova-common//src//ConfigParser//ConfigParser');
+    var ConfigParser = require(projectPath + '/../..//..//node_modules//cordova//node_modules//cordova-lib//cordova-lib').configparser;
     var config = new ConfigParser('config.xml');
     var versionNumber = config.version().replace('v','').replace('-','.');
     var versionObject = { alpha: 1, beta: 2, rc: 3 };
